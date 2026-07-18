@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="../ChurchAPI.Tests/ChurchAPI.Tests.csproj" />
+  <Project Path="ChurchAPI.csproj" />
+</Solution>
