@@ -50,11 +50,6 @@ namespace ChurchAPI.Services
             {
                 var occurrences = item.GetOccurrences(fromDate, new EvaluationOptions())
                                         .TakeWhile(x => x.Period.StartTime.Value <= to.ToDateTime(TimeOnly.MaxValue));
-
-                if(item.Summary.Contains("Prize"))
-                {
-
-                }
                 foreach (var occurrence in occurrences)
                 {
                     var start = GetUKDateTime(occurrence.Period.StartTime);
