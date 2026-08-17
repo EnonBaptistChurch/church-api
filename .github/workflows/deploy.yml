@@ -1,0 +1,25 @@
+name: Deploy Church API to Raspberry Pi
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Build and Run Container
+        run: |
+          docker build -t church-api:latest .
+          docker stop church-api || true
+          docker rm church-api || true
+          docker run -d \
+            --name church-api \
+            --restart unless-stopped \
+            -p 8080:8080 \
+            --memory=300m \
+            church-api:latest
